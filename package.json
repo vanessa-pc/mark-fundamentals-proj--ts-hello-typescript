@@ -1,5 +1,5 @@
 {
-  "name": "mark-fundamentals-proj--ts-hello-world",
+  "name": "mark-fundamentals-proj--ts-hello-types",
   "version": "1.0.0",
   "scripts": {
     "start:js": "node src/javascript",
