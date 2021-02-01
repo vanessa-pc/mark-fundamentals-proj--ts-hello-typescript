@@ -254,3 +254,7 @@ const area = rectangle.width * rectangle.height;
 ### Running the code
 
 Now, when you run the code with `yarn start:ts`, the code will give much more sensible output than our original buggy and strange JavaScript!
+
+## Exercise 3: Compiling our TypeScript code
+
+> 🎯 **Success criterion:** you can run a compiled JavaScript file, `build/index.js`, from your original TypeScript
