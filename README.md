@@ -280,7 +280,9 @@ After you run this, you should see a `build` folder appear, with the following t
 - `index.js` - this is ordinary JavaScript
 - `index.js.map` - this is a [source map](https://stackoverflow.com/questions/17493738/what-is-a-typescript-map-file), which you don't need to worry about or read
 
-Since `index.js` is an ordinary JavaScript file, we can run it with node:
+> ⚠️ Our `.gitignore` lists the directory `build` - it is common practice to ignore any compiled JavaScript, and only track the TypeScript code in version control. `dist` is also listed - `build` and `dist` are the most common folders that developers use for compiling down TypeScript into JavaScript. This can be configured through your `tsconfig.json`, in the `outDir` option.
+
+Since `build/index.js` is an ordinary JavaScript file, we can run it with node:
 
 ```bash
 node build/index.js
@@ -308,6 +310,33 @@ yarn compile
 yarn start:build
 ```
 
-### Reading the compiled code
+### Optional aside: target JS version
 
 We wouldn't typically read the compiled code, but if you look at it, you'll see it looks (for the most part) very similar to the JavaScript code we have in `src/javascript/index.js`.
+
+We could change this, if we wanted. [JavaScript has had multiple versions](https://www.w3schools.com/js/js_versions.asp), and we're currently compiling our TypeScript down to the 2015 version (also known as ES6).
+
+But, we could compile into an older version (e.g. for legacy browser support - or just curiosity!).
+
+Go into `tsconfig.json`, and change the `target` to `"es3"`:
+
+```json
+{
+  "compilerOptions": {
+    // other options
+    "target": "es3",
+    //other options
+    }
+  },
+  "include": ["src/**/*"]
+}
+```
+
+Then, run `yarn compile` again. You'll see that the resultant compiled code (which overwrites whatever was in our `build` directory before) looks different - in particular:
+
+- there's no `let` or `const` (since these didn't exist in ES3)
+- there's no template string interpolation (since this didn't exist in ES3)
+
+In practice, `"es6"` tends to be the most common compilation target.
+
+### Reading the compiled code
