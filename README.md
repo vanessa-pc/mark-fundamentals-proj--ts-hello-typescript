@@ -340,3 +340,9 @@ Then, run `yarn compile` again. You'll see that the resultant compiled code (whi
 In practice, `"es6"` tends to be the most common compilation target.
 
 ### Reading the compiled code
+
+Currently, the differences between our written TypeScript and compiled JavaScript are quite minor - the TypeScript compiler helped us catch some errors, but it hasn't fundamentally changed much about our code.
+
+This is because we're currently _scratching the surface_ of TypeScript. Normal TypeScript code will have a lot of TypeScript-specific syntax, which then gets stripped out by the TypeScript compiler as it compiles it down to JavaScript.
+
+We'll see this in future exercises!
