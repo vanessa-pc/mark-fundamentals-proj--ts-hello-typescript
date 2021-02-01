@@ -114,9 +114,9 @@ console.log(
 
 What we wanted was `const area = rectangle.width * rectangle.height` - and we made a silly typo of `rectangle.heihgt` instead of `rectangle.height`!
 
-## Exercise 1: Static and strong typing with TypeScript
+## Exercise 1: Catching errors with TypeScript
 
-> 🎯 **Success criterion:** you can make the TypeScript code in `src/typescript.index.ts` compile
+> 🎯 **Success criterion:** you can articulate some benefits of TypeScript
 
 ### Background to TypeScript
 
@@ -148,6 +148,8 @@ Handily:
 - we have a convenient `start:ts` script in our `package.json`
 
 So let's try to run this TypeScript file with `yarn start:ts`.
+
+> ⚠️ Unlike JavaScript, TypeScript is a _compiled language_ (it actually compiles down to JavaScript) - it has to be processed before it is run. Under-the-hood, `ts-node` is effectively compiling TypeScript down to JavaScript; then, if that is successful, going on to run the compiled JavaScript code. For now, though, you can think of it like 'running' the TypeScript code - we'll split out compilation later.
 
 _It throws an error: TypeScript won't let you run this strange, quirky code._
 
