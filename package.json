@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start:js": "node src/javascript",
-    "start:ts": "ts-node src/typescript"
+    "start:ts": "ts-node src/typescript",
+    "compile": "tsc"
   },
   "license": "CC-BY-NC-ND-4.0",
   "dependencies": {},

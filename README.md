@@ -258,3 +258,48 @@ Now, when you run the code with `yarn start:ts`, the code will give much more se
 ## Exercise 3: Compiling our TypeScript code
 
 > 🎯 **Success criterion:** you can run a compiled JavaScript file, `build/index.js`, from your original TypeScript
+
+TypeScript is technically a _compiled language_ - it needs to be compiled before it is executed.
+
+As it happens, it compiles down to normal JavaScript - that's how TypeScript code (ultimately) gets access to ordinary JavaScript environments.
+
+### Compiling our TypeScript code
+
+We will trigger a build of our TypeScript code using the following script (defined in our `package.json` - look for details if you're interested):
+
+```bash
+yarn compile
+```
+
+After you run this, you should see a `build` folder appear, with the following two files:
+
+- `index.js` - this is ordinary JavaScript
+- `index.js.map` - this is a [source map](https://stackoverflow.com/questions/17493738/what-is-a-typescript-map-file), which you don't need to worry about or read
+
+Since `index.js` is an ordinary JavaScript file, we can run it with node:
+
+```bash
+node build/index.js
+```
+
+And you'll see the output.
+
+It will probably be helpful here to add a convenience script for this to `package.json`, e.g.:
+
+```json
+"scripts": {
+  // other scripts from before, then
+  "start:build": "node build"
+}
+```
+
+(Make sure you add a comma after your last previous script before adding a new one, and check that any final scripts don't have a trailing comma after them.)
+
+If we use this process - write, then compile - we'll need to re-compile our code for it to take effect when we run it.
+
+For example, if we assigned `numberTwo` to `100`, then our compiled code would still show its previous assignment of `10`, until we recompiled and re-ran:
+
+```bash
+yarn compile
+yarn start:build
+```
