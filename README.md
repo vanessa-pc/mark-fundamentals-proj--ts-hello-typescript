@@ -170,7 +170,7 @@ At first, this might seem like a _bad_ thing. After all, running code that behav
 
 Well - not always (and probably _not_ in most cases which TypeScript catches).
 
-#### TypeScript's design goals
+**TypeScript's design goals**
 
 At this point, you should read [TypeScript's Design Goals](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Design-Goals).
 
@@ -183,7 +183,7 @@ _(Statically: before the code is actually run.)_
 
 These are both pretty good things to have (hopefully in a relatively self-evident way).
 
-#### JavaScript's weaknesses
+**JavaScript's weaknesses**
 
 JavaScript, unfortunately, does not particularly succeed at these goals.
 
@@ -192,7 +192,7 @@ For example:
 - It didn't statically (before runtime) capture our silly typo of `rectangle.heihgt`.
 - It's not easy to reason about the strange things happening in `src/javascript/type-coercion.js`
 
-#### TypeScript's static type-checker
+**TypeScript's static type-checker**
 
 TypeScript adds some more restrictive rules to JavaScript. The TypeScript language checker is flagging three things in `index.ts` and not letting us run our code whilst they're there - they're likely errors (mistakes) and/or not easy to reason about.
 
