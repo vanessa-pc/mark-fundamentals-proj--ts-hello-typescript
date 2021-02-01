@@ -145,7 +145,7 @@ If you hover over each of these in VS Code, you'll see some helpful error messag
 
 In other words - TypeScript is anticipating each of the strange and annoying quirks that we saw before!
 
-We've installed `node`, which we can use to run ordinary JavaScript files. However, `node` is incapable of running TypeScript (`.ts`) files.
+We've installed `node`, which we can use to run ordinary JavaScript files. However, `node` is incapable of running TypeScript (`.ts`) files. (Try it if you want to: `node src/typescript`.)
 
 Instead, we'll (for now) use a library called [`ts-node`](https://github.com/TypeStrong/ts-node) to run our TypeScript files.
 
@@ -154,11 +154,13 @@ Handily:
 - we have installed `ts-node` into `node_modules` with `yarn`, since `ts-node` is listed under our `devDependencies` in `package.json`
 - we have a convenient `start:ts` script in our `package.json`
 
+> ⚠️ Before, we found that we could run JavaScript files directly in the terminal with `node path/to/dir/file.js`, and we used our `package.json` scripts as a convenience helper. However, you will probably find that your `ts-node` script works when run via `yarn`, but not when typed directly into the terminal. This is fine, and expected - your `package.json` scripts looks up a locally installed `ts-node` inside `node_modules`, whereas `ts-node` directly in the terminal looks for a global installation. If you'd like to be able to run `ts-node` directly within the terminal, you can make a global installation with `yarn global add ts-node`.
+
 So let's try to run this TypeScript file with `yarn start:ts`.
 
-> ⚠️ Unlike JavaScript, TypeScript is a _compiled language_ (it actually compiles down to JavaScript) - it has to be processed before it is run. Under-the-hood, `ts-node` is effectively compiling TypeScript down to JavaScript; then, if that is successful, going on to run the compiled JavaScript code. For now, though, you can think of it like 'running' the TypeScript code - we'll split out compilation later.
-
 _It throws an error: TypeScript won't let you run this strange, quirky code._
+
+> ⚠️ Unlike JavaScript, TypeScript is a _compiled language_ (it actually compiles down to JavaScript) - it has to be processed before it is run. Under-the-hood, `ts-node` is effectively compiling TypeScript down to JavaScript; then, if that is successful, going on to run the compiled JavaScript code. For now, though, you can think of it like 'running' the TypeScript code - we'll split out compilation later.
 
 ### Why can't we run this TypeScript code?
 
@@ -271,6 +273,8 @@ We will trigger a build of our TypeScript code using the following script (defin
 yarn compile
 ```
 
+> ⚠️ The `compile` script simply runs `tsc`, a command given to us by a `typescript` installation. Similarly to `ts-node`, it currently looks up a local installation of `typescript` in your `node_modules`. If you'd like to be able to run `tsc` directly in your terminal, you'll need a global installation of `typescript`: `yarn global add typescript`
+
 After you run this, you should see a `build` folder appear, with the following two files:
 
 - `index.js` - this is ordinary JavaScript
@@ -303,3 +307,7 @@ For example, if we assigned `numberTwo` to `100`, then our compiled code would s
 yarn compile
 yarn start:build
 ```
+
+### Reading the compiled code
+
+We wouldn't typically read the compiled code, but if you look at it, you'll see it looks (for the most part) very similar to the JavaScript code we have in `src/javascript/index.js`.
