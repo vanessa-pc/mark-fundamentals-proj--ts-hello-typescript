@@ -122,6 +122,13 @@ What we wanted was `const area = rectangle.width * rectangle.height` - and we ma
 
 TypeScript irons out some of the quirks of JavaScript by keeping _all_ JavaScript syntax (but adding in some extra rules and syntax).
 
+It has been built off JavaScript in a way such that:
+
+- TypeScript code can use the existing JavaScript ecosystem of libraries
+- TypeScript code can (ultimately) be run in JavaScript-friendly environments, like web browsers
+
+(There are other languages which are entirely unrelated to JavaScript, which don't have JS quirks - but they can't access the JS ecosystem and environments in the way that TypeScript can.)
+
 There is a good introduction on the TypeScript website: [TypeScript for the New Programmer](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html).
 
 ### Trying to run our initial TypeScript code
@@ -192,3 +199,58 @@ Essentially, TypeScript is setting a higher-bar for JavaScript code - things tha
 > ⚠️ It is possible to _relax_ the rules of TypeScript and make it closer to JavaScript's permissiveness. However, we'll be running TypeScript on maximum strictness, for the fullest TypeScript experience.
 
 Check out the TypeScript website: at the time of writing ([cached version](https://webcache.googleusercontent.com/search?q=cache:xKuO76lAzEgJ:https://www.typescriptlang.org/+&cd=1&hl=en&ct=clnk&gl=uk)), TypeScript says: "TypeScript saves you time catching errors and providing fixes **before you run code**" (emphasis added).
+
+## Exercise 2: Fixing and running the TypeScript code
+
+> 🎯 **Success criterion:** you can run the TypeScript code in `src/typescript/index.ts`
+
+So, TypeScript is stopping us from running the code we have in `index.ts` (which would behave in strange and silly ways).
+
+Let's fix each of those.
+
+### Reassigning `numberOne`
+
+_`Type 'string' is not assignable to type 'number'.`_
+
+When we declared `numberOne` and made an initial assignment to `5`, TypeScript _inferred_ that the variable `numberOne` is be a number.
+
+TypeScript uses this inferred type knowledge when it raises an error on the re-assignment of `numberOne` to `"7"` - a sort of "hey, you assigned this variable to a number before; you probably shouldn't be assigning it a string now".
+
+We can fix that by replacing `"7"` with `7` - a reassignment of a number to a variable which is typed as a `number`, so the TypeScript type checker is happy.
+
+```ts
+numberOne = 7; // instead of "7"
+```
+
+### Using array concatenation
+
+_`Operator '+' cannot be applied to types 'number[]' and 'number[]'.`_
+
+In JavaScript, arrays can't be 'added' or 'joined' with the `+` operator in a way that we might expect - and TypeScript warns us about this.
+
+If we were looking for `[1, 2, 3, 4, 5, 6]`, we should instead be using array concatenation:
+
+```ts
+const joinedArr = arrOne.concat(arrTwo);
+
+// a more modern syntax below, but don't worry about it too much right now
+// const joinedArr = [...arrOne, ...arrTwo]
+```
+
+### Using the correct property key
+
+_`Property 'heihgt' does not exist on type '{ width: number; height: number; }'. Did you mean 'height'?`_
+
+JavaScript looked on and cruelly laughed at us as we made a silly typo.
+
+TypeScript is much more helpful, proactively warning us in cases of likely typos.
+
+Let's fix this by reading the correct property name:
+
+```ts
+const area = rectangle.width * rectangle.height;
+```
+
+### Running the code
+
+Now, when you run the code with `yarn start:ts`, the code will give much more sensible output than our original buggy and strange JavaScript!
