@@ -151,7 +151,7 @@ To run files via the terminal using TypeScript, we'll (for now) use a library ca
 
 Handily:
 
-- we have installed `ts-node` into `node_modules` with `yarn`, since `ts-node` is listed under our `devDependencies` in `package.json`
+- running `yarn` will install `ts-node` (downloading it into `node-modules`), since `ts-node` is listed under our `devDependencies` in `package.json`
 - we have a convenient `start:ts` script in our `package.json`
 
 > ⚠️ Before, we found that we could run JavaScript files directly in the terminal with `node path/to/dir/file.js`, and we used our `package.json` scripts as a convenience helper. However, you will probably find that your `ts-node` script works when run via `yarn`, but not when typed directly into the terminal. This is fine, and expected - your `package.json` scripts looks up a locally installed `ts-node` inside `node_modules`, whereas `ts-node` directly in the terminal looks for a global installation. If you'd like to be able to run `ts-node` directly within the terminal, you can make a global installation with `yarn global add ts-node`.
