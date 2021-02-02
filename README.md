@@ -30,7 +30,7 @@ This project is about introducing and motivating TypeScript.
 
 > 🎯 **Success criterion:** you can run the project JavaScript code and see its weird quirky behaviour
 
-JavaScript is semi-notorious for having weird quirky behaviour at the extremes of the language, [as illustrated in this famous 5 minute lightning walk](https://www.destroyallsoftware.com/talks/wat).
+JavaScript is semi-notorious for having weird quirky behaviour at the extremes of the language, [as illustrated in this famous 5 minute lightning talk](https://www.destroyallsoftware.com/talks/wat).
 
 ### Seeing strange behaviour in your terminal
 
@@ -38,7 +38,7 @@ There's an example of this in `src/javascript/index.js` - if you run this throug
 
 There are three different ways you can run that code (try all of them!).
 
-Assuming that you're in the root directory of the project:
+From the root directory of the project, there are three command options:
 
 - `node src/javascript/index.js`: Use `node` to run a JavaScript file. Which one? The one at `src/javascript/index.js`.
 - `node src/javascript`: Use `node` to run a JavaScript file. Which one? The one at `src/javascript`. Oh, that's not a JavaScript file, it's a folder - but it does have an `index.js` file in the folder, so I'll run that! (This is known shorthand with `node` - if the path is to a folder rather than to a file, it will try to find an `index.js` inside that folder)
@@ -100,7 +100,7 @@ But the flexibility of weak typing can also be very dangerous, in leading to une
 
 ### Annoying typos
 
-A common cause of error (and frustration) in JavaScript is _really silly typos_. Your logic might all be correct, but you've mistyped something, and it causes a bug which is really hard to chase down. (It's very hard to spot typos in your own code!)
+A common cause of errors (and frustration) in JavaScript is _really silly typos_. Your logic might all be correct, but you've mistyped something, and it causes a bug which is really hard to chase down. (It's very hard to spot typos in your own code!)
 
 That's the cause of the following 'bug' in `src/javascript/index.js`:
 
@@ -145,9 +145,9 @@ If you hover over each of these in VS Code, you'll see some helpful error messag
 
 In other words - TypeScript is anticipating each of the strange and annoying quirks that we saw before!
 
-We've installed `node`, which we can use to run ordinary JavaScript files. However, `node` is incapable of running TypeScript (`.ts`) files. (Try it if you want to: `node src/typescript`.)
+We've installed `node` - this runs JavaScript files. Note that it will run a file as though it were JavaScript regardless of the file extension - if you change the file extension on `src/javascript/index.js` to `.py` or `.ts` and run it using `node src/javascript/index.py` or `node src/javascript/index.py` it would still run using JavaScript and give the same results (regardless of all the error highlighting on VS Code as the editor determines the language via the file extension). Remember to change the file extension back after experimenting. 
 
-Instead, we'll (for now) use a library called [`ts-node`](https://github.com/TypeStrong/ts-node) to run our TypeScript files.
+To run files via the terminal using TypeScript, we'll (for now) use a library called [`ts-node`](https://github.com/TypeStrong/ts-node).
 
 Handily:
 
