@@ -4,7 +4,8 @@
   "scripts": {
     "start:js": "node src/javascript",
     "start:ts": "ts-node src/typescript",
-    "compile": "tsc"
+    "compile": "tsc",
+    "start:build": "node build"
   },
   "license": "CC-BY-NC-ND-4.0",
   "dependencies": {},
