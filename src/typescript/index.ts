@@ -1,5 +1,5 @@
 let numberOne = 5;
-const numberTwo = 10;
+const numberTwo = 100;
 numberOne = 7;
 const additionResult = numberOne + numberTwo;
 console.log(`${numberOne} plus ${numberTwo} is... ${additionResult}`);
